@@ -1,12 +1,19 @@
 import { StatusBar } from 'expo-status-bar'
-import { HomeScreen } from './src/screens/home/HomeScreen'
-import { View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { MainStackScreen } from './src/screens/list-event/MainStackScreen'
+
+const EventListStack = createNativeStackNavigator()
 
 export default function App () {
   return (
-    <View>
-      <HomeScreen />
+    <>
+      <NavigationContainer>
+        <EventListStack.Navigator screenOptions={{ headerShown: false }}>
+          <EventListStack.Screen name='Main' component={MainStackScreen} />
+        </EventListStack.Navigator>
+      </NavigationContainer>
       <StatusBar style='auto' />
-    </View>
+    </>
   )
 }
