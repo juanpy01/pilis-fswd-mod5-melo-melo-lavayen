@@ -9,9 +9,9 @@ export const styles = StyleSheet.create({
   bgImage: {
     resizeMode: 'cover',
     width: '100%',
-    height: 900,
+    height: 750,
     justifyContent: 'center',
-    top: -50
+    top: -5
   },
   title: {
     fontSize: FONT_SIZE.xxxl,
