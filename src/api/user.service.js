@@ -2,7 +2,7 @@ import { api } from './api'
 
 const ENDPOINT = `${api.server + api.apiVersion}/users`
 
-export const getEventList = async () => {
+export const getUserList = async () => {
   try {
     const response = await fetch(ENDPOINT)
     return response.json()

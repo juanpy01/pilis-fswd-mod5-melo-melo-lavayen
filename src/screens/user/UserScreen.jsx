@@ -41,7 +41,7 @@ export const UserScreen = () => {
         </View>
       </View>
       <View style={styles.content}>
-        <Text style={styles.sectionTitle}>About Me</Text>
+        <Text style={styles.sectionTitle}>Acerca de mi...</Text>
         <Text style={styles.sectionText}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
           tellus eu nisi tincidunt ultrices. Morbi id dictum ipsum. Nunc nec
