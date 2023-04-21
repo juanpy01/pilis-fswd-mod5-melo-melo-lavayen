@@ -1,22 +1,26 @@
-import React, { useContext } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
-import { styles } from './LoginScreen.styles'
+import React, { useContext, useEffect, useState } from 'react'
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
+import { useNavigation } from '@react-navigation/native'
 import { useForm, Controller } from 'react-hook-form'
 import { UserContext } from "../../user-context/userContext"
-import { useNavigation } from '@react-navigation/native'
+import { View, Text, TextInput, TouchableOpacity, Alert, Button } from 'react-native'
 import { dataUser } from "../../api/dataUser"
+import { styles } from './LoginScreen.styles'
 
+WebBrowser.maybeCompleteAuthSession();
 
 export const LoginScreen = () => {
 
-  const navigation = useNavigation()
   const { currentUser, setCurrentUser } = useContext(UserContext)
+  const [token, setToken] = useState("");
+  const navigation = useNavigation()
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      username: '',
+      email: '',
       password: ''
     }
-  })
+  });
 
   const handleLogin = ({ email, password }) => {
 
@@ -33,7 +37,45 @@ export const LoginScreen = () => {
     }
   };
 
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    clientId: "109688182930-222tob7mlbvo8ugo8mualmuube13vgj6.apps.googleusercontent.com",
+    androidClientId: "109688182930-j174opm1g9i1q8m7rskdqc0cagjh38cl.apps.googleusercontent.com",
+  });
+
+  useEffect(() => {
+    if (response?.type === "success") {
+      setToken(response.authentication.accessToken);
+      token && getUserInfo();
+    }
+  }, [response, token]);
+
+  const getUserInfo = async () => {
+    try {
+      const response = await fetch("https://www.googleapis.com/userinfo/v2/me/",
+        {
+          headers:
+            { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      const user = await response.json();
+      setCurrentUser({
+        id: user.id,
+        name: user.given_name,
+        lastname: user.family_name,
+        email: user.email,
+        image: user.picture,
+        telephone: +5493885022454545,
+        city: "Jujuy, Argentina",
+        token
+      });
+    } catch (error) {
+      throw error
+    }
+  };
+
   return (
+
     <View style={styles.container}>
       <Text style={styles.title}>Iniciar de Sesión</Text>
       <Controller
@@ -71,6 +113,24 @@ export const LoginScreen = () => {
       <TouchableOpacity style={styles.button} onPress={handleSubmit(handleLogin)}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
+
+      <Text style={styles.titleGoogle}>Inicia Sesion con Google</Text>
+      <TouchableOpacity
+        style={styles.containerButtonGoogle}
+        disabled={!request}
+        onPress={() => {
+          promptAsync();
+        }}
+      >
+        <Text style={styles.textButtonGoole}>
+          Sign in with Google"
+        </Text>
+      </TouchableOpacity>
+
+      <Text>
+        Registrarse
+      </Text>
+
     </View>
   )
 };

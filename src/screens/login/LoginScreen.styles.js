@@ -4,7 +4,7 @@ import { COLORS } from '../../utils/theme'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin:10,
+    margin: 10,
     padding: 10,
     backgroundColor: '#fff',
     marginTop: StatusBar.currentHeight,
@@ -13,10 +13,10 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     fontStyle: 'italic',
-    textDecorationLine: "underline" , 
+    textDecorationLine: "underline",
     marginBottom: 16,
     textAlign: 'center',
-    marginTop:30
+    marginTop: 30
   },
   input: {
     height: 40,
@@ -42,5 +42,29 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     fontWeight: 'bold'
-  }
-})
+  },
+  titleGoogle:{
+    fontSize: 24,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    textDecorationLine: "underline",
+    marginBottom: 16,
+    textAlign: 'center',
+    marginTop: 70
+  },
+  containerButtonGoogle: {
+    backgroundColor: "blue",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop:10,
+    borderRadius:10,
+    padding:10
+  },
+  textButtonGoole: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+});
+
+
+
