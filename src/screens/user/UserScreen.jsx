@@ -2,14 +2,24 @@ import React, { useContext } from 'react'
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { styles } from './UserScreen.styles'
 import { UserContext } from '../../user-context/userContext';
+import * as AuthSession from 'expo-auth-session';
 
 
 export const UserScreen = () => {
 
   const { currentUser, setCurrentUser } = useContext(UserContext)
+  const {token} = currentUser
 
-  const logOut = () => {
-    setCurrentUser(null)
+  const logOut = async() => {
+    try {
+      if(currentUser.token){
+        await AuthSession.revokeAsync({token}, {revocationEndpoint: "https://oauth2.googleapis.com/revoke"})
+        setCurrentUser(null);
+      }
+      setCurrentUser(null)
+    } catch (error) {
+      throw error;
+    }
   };
 
   return (
@@ -17,15 +27,18 @@ export const UserScreen = () => {
       <View style={styles.header}>
         <Image
           style={styles.profileImage}
-          // source={require('../../../assets/images/avatar.png')}
+          source={{ uri: currentUser.image }}
         />
         <View style={styles.profileInfo}>
-          <Text style={styles.profileName}>{`${currentUser.name} ${currentUser.lastname}`}</Text>
-          <Text style={styles.profileLocation}>Jujuy, Argentina</Text>
+          <Text style={styles.profileName}>{currentUser.name}</Text>
+          <Text style={styles.profileName}>{currentUser.lastname}</Text>
+          <Text style={styles.profileLocation}>{currentUser.city}</Text>
         </View>
-        <TouchableOpacity style={styles.button} onPress={logOut}>
-          <Text style={styles.buttonText}>Salir</Text>
-        </TouchableOpacity>
+        <View>
+          <TouchableOpacity style={styles.button} onPress={logOut}>
+            <Text style={styles.buttonText}>Salir</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.content}>
         <Text style={styles.sectionTitle}>About Me</Text>
@@ -34,14 +47,13 @@ export const UserScreen = () => {
           tellus eu nisi tincidunt ultrices. Morbi id dictum ipsum. Nunc nec
           lacus massa. Integer eget elit non elit sodales maximus.
         </Text>
-        <Text style={styles.sectionTitle}>Interests</Text>
-        <Text style={styles.sectionText}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut
-          tellus eu nisi tincidunt ultrices. Morbi id dictum ipsum. Nunc nec
-          lacus massa. Integer eget elit non elit sodales maximus.
-        </Text>
+        <Text style={styles.sectionTitle}>Datos de la Cuenta</Text>
+        <Text style={styles.sectionText}>Email: {currentUser.email}</Text>
+        <Text style={styles.sectionText}>Nombre: {currentUser.name}</Text>
+        <Text style={styles.sectionText}>Apellido: {currentUser.lastname}</Text>
+        <Text style={styles.sectionText}>Telefono/Cel: {currentUser.telephone}</Text>
+        <Text style={styles.sectionText}>Ciudad: {currentUser.city}</Text>
       </View>
-
     </ScrollView>
   );
 };
