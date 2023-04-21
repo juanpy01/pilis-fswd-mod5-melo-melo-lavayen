@@ -5,14 +5,14 @@ import { useNavigation } from '@react-navigation/native'
 import { useForm, Controller } from 'react-hook-form'
 import { UserContext } from "../../user-context/userContext"
 import { View, Text, TextInput, TouchableOpacity, Alert, Button } from 'react-native'
-import { dataUser } from "../../api/dataUser"
 import { styles } from './LoginScreen.styles'
+import { getUserList } from '../../api/user.service';
 
 WebBrowser.maybeCompleteAuthSession();
 
 export const LoginScreen = () => {
 
-  const { currentUser, setCurrentUser } = useContext(UserContext)
+  const { setCurrentUser } = useContext(UserContext)
   const [token, setToken] = useState("");
   const navigation = useNavigation()
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -22,9 +22,11 @@ export const LoginScreen = () => {
     }
   });
 
-  const handleLogin = ({ email, password }) => {
+  const handleLoginAPI = async ({ email, password }) => {
 
-    const userValidate = dataUser.find(item => item.email.toLowerCase() === email && item.password === password)
+    const userDataApi = await getUserList()
+
+    const userValidate = userDataApi.find(item => item.email.toLowerCase() === email && item.password === password)
     if (userValidate) {
       setCurrentUser(userValidate)
       navigation.navigate('Home')
@@ -45,11 +47,11 @@ export const LoginScreen = () => {
   useEffect(() => {
     if (response?.type === "success") {
       setToken(response.authentication.accessToken);
-      token && getUserInfo();
+      token && getUserGoogleInfo();
     }
   }, [response, token]);
 
-  const getUserInfo = async () => {
+  const getUserGoogleInfo = async () => {
     try {
       const response = await fetch("https://www.googleapis.com/userinfo/v2/me/",
         {
@@ -58,19 +60,22 @@ export const LoginScreen = () => {
         }
       );
 
-      const user = await response.json();
+      const userGoogleData = await response.json();
       setCurrentUser({
-        id: user.id,
-        name: user.given_name,
-        lastname: user.family_name,
-        email: user.email,
-        image: user.picture,
+        id: userGoogleData.id,
+        name: userGoogleData.given_name,
+        lastname: userGoogleData.family_name,
+        email: userGoogleData.email,
+        image: userGoogleData.picture,
         telephone: +5493885022454545,
         city: "Jujuy, Argentina",
         token
       });
+
+      navigation.navigate('Home')
+
     } catch (error) {
-      throw error
+      throw error;
     }
   };
 
@@ -110,7 +115,7 @@ export const LoginScreen = () => {
         rules={{ required: 'La constraseña es requerida' }}
       />
       {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
-      <TouchableOpacity style={styles.button} onPress={handleSubmit(handleLogin)}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit(handleLoginAPI)}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
 
