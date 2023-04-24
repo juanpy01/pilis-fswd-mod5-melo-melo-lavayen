@@ -79,6 +79,10 @@ export const LoginScreen = () => {
     }
   };
 
+  const handleRegister = () => {
+    navigation.navigate("userRegister")
+  }
+
   return (
 
     <View style={styles.container}>
@@ -132,10 +136,11 @@ export const LoginScreen = () => {
         </Text>
       </TouchableOpacity>
 
-      <Text>
-        Registrarse
-      </Text>
+      <Button
+        title="Registrarse"
+        onPress={handleRegister}
+      />
 
-    </View>
+    </View >
   )
 };
