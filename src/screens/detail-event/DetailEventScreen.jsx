@@ -26,7 +26,7 @@ export const DetailEventScreen = ({ route }) => {
 
   const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
+  useEffect(() => {
     getEventList()
       .then(data => {
         setIsLoading(false)

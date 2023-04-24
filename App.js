@@ -19,6 +19,10 @@ export default function App() {
               name="DetailEvent"
               component={DetailEventScreen}
             />
+            {/*             <EventListStack.Screen
+              name="DetailWeb"
+              component={DetailEventWeb}
+            /> */}
           </EventListStack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
