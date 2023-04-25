@@ -1,18 +1,18 @@
 import { StatusBar, StyleSheet } from 'react-native'
-import { COLORS } from '../../utils/theme'
+import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.secondary,
     marginTop: StatusBar.currentHeight
   },
   header: {
-    backgroundColor: '#F0F0F0',
+    backgroundColor: COLORS.primary,
     flexDirection: 'row',
     padding: 20,
-    borderBottomColor: '#EFEFEF',
-    borderBottomWidth: 1
+    borderBottomColor: COLORS.grey,
+    borderBottomWidth: 2
   },
   profileImage: {
     width: 80,
@@ -24,40 +24,49 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   profileName: {
-    fontSize: 24,
-    fontWeight: 'bold'
+    fontSize: FONT_SIZE.lg,
+    color: COLORS.text,
+    fontWeight: 'bold',
+    marginLeft: 5
   },
   profileLocation: {
-    fontSize: 16,
-    color: '#777'
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textWhite
   },
   content: {
     flex: 1,
     padding: 20
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: FONT_SIZE.lg,
+    color: COLORS.textSecondary,
     fontWeight: 'bold',
     marginBottom: 10
   },
   sectionText: {
-    fontSize: 16,
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textWhite,
     marginBottom: 20,
     lineHeight: 24
   },
   button: {
     justifyContent: 'center',
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
     marginTop: 15,
     marginLeft: 10,
-    height: 50
+    height: 50,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
   },
   buttonText: {
     color: COLORS.white,
-    fontSize: 18,
+    fontSize: FONT_SIZE.md,
     fontWeight: 'bold'
   }
 })

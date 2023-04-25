@@ -1,27 +1,31 @@
 import { StatusBar, StyleSheet } from 'react-native'
-import { COLORS } from '../../utils/theme'
+import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 10,
-    padding: 10,
-    backgroundColor: '#fff',
     marginTop: StatusBar.currentHeight,
+    backgroundColor: COLORS.primary
+  },
+  loginContainer: {
+    flex: 1,
+    margin: 10,
+    padding: 10
   },
   title: {
-    fontSize: 24,
+    fontSize: FONT_SIZE.lg,
+    color: COLORS.text,
     fontWeight: 'bold',
     fontStyle: 'italic',
-    textDecorationLine: "underline",
     marginBottom: 16,
     textAlign: 'center',
     marginTop: 30
   },
   input: {
+    color: COLORS.textWhite,
     height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
+    borderColor: COLORS.secondary,
+    borderWidth: 2,
     borderRadius: 10,
     paddingHorizontal: 15,
     marginBottom: 5
@@ -31,40 +35,56 @@ export const styles = StyleSheet.create({
     marginBottom: 8
   },
   button: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secondary,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
     marginTop: 8,
-    alignItems: 'center'
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 20,
+    color: COLORS.textWhite,
+    fontSize: FONT_SIZE.lg,
     fontWeight: 'bold'
   },
-  titleGoogle:{
-    fontSize: 24,
+  titleGoogle: {
+    color: COLORS.text,
+    fontSize: FONT_SIZE.lg,
     fontWeight: 'bold',
     fontStyle: 'italic',
-    textDecorationLine: "underline",
     marginBottom: 16,
     textAlign: 'center',
     marginTop: 70
   },
   containerButtonGoogle: {
-    backgroundColor: "blue",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop:10,
-    borderRadius:10,
-    padding:10
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  textButtonGoole: {
-    fontSize: 20,
-    fontWeight: "bold",
+  imageGoogleBtn: {
+    height: 70,
+    objectFit: 'scale-down'
   },
-});
-
-
-
+  buttonRegitro: {
+    marginTop: 80,
+    backgroundColor: COLORS.secondary,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
+  },
+  buttonRegText: {
+    color: COLORS.text,
+    fontSize: FONT_SIZE.lg,
+    fontWeight: 'bold'
+  }
+})

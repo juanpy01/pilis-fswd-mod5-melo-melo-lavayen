@@ -1,38 +1,65 @@
 import { StatusBar, StyleSheet } from 'react-native'
-
+import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 10,
-    padding: 10,
     marginTop: StatusBar.currentHeight,
-    borderRadius: 20,
-    backgroundColor: "#F9F9F9",
+    backgroundColor: COLORS.primary
+  },
+  regContainer: {
+    flex: 1,
+    margin: 10,
+    padding: 10
   },
   title: {
-    fontSize: 24,
+    fontSize: FONT_SIZE.lg,
+    color: COLORS.text,
     fontWeight: 'bold',
     fontStyle: 'italic',
-    textDecorationLine: "underline",
     marginBottom: 16,
     textAlign: 'center',
     marginTop: 30
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
+    color: COLORS.textWhite,
+    height: 50,
+    borderColor: COLORS.secondary,
+    borderWidth: 2,
     borderRadius: 10,
     paddingHorizontal: 15,
-    marginBottom: 10
+    marginBottom: 5
   },
   errorText: {
     color: 'red',
     marginBottom: 8
   },
+  buttonCities: {
+    color: COLORS.textWhite,
+    width: '80%',
+    backgroundColor: COLORS.secondary,
+    borderRadius: 20,
+    marginRight: 35,
+    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2
+  },
+  buttonCitiesText: {
+    color: COLORS.textWhite
+  },
+  buttonCitiesRowStyle: {
+    backgroundColor: COLORS.secondary,
+    borderBottomColor: COLORS.primary
+  },
+  buttonCitiesRowTextStyle: {
+    color: COLORS.textWhite,
+    textAlign: 'center'
+  },
   buttonReset: {
-    backgroundColor: "orange",
+    backgroundColor: COLORS.secondary,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
@@ -40,7 +67,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonSave: {
-    backgroundColor: "red",
+    backgroundColor: COLORS.white,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
@@ -48,29 +75,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 20,
+    color: COLORS.textBlack,
+    fontSize: FONT_SIZE.lg,
     fontWeight: 'bold'
-  },
-  titleGoogle:{
-    fontSize: 24,
-    fontWeight: 'bold',
-    fontStyle: 'italic',
-    textDecorationLine: "underline",
-    marginBottom: 16,
-    textAlign: 'center',
-    marginTop: 70
-  },
-  containerButtonGoogle: {
-    backgroundColor: "blue",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop:10,
-    borderRadius:10,
-    padding:10
-  },
-  textButtonGoole: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-});
+  }
+})
