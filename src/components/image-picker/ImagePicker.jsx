@@ -21,7 +21,7 @@ export const ImageProfile = ({ image, setImage }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Seleccionar imagen de perfil:</Text>
+      <Text style={styles.title}>Imagen de perfil:</Text>
       <Button title='Cargar' onPress={pickImage} />
       {image && <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />}
     </View>
