@@ -26,7 +26,7 @@ export const ListEventScreen = ({ navigation }) => {
   }, [])
 
   const event = ({ item }) => (
-    <Pressable onPress={() => navigation.navigate('DetailEvent', {item})}>
+    <Pressable onPress={() => navigation.navigate('DetailEvent', { item })}>
       <View style={styles.itemContainer}>
         <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} />
         <Text style={styles.itemTitle}>{item.title}</Text>
@@ -44,6 +44,7 @@ export const ListEventScreen = ({ navigation }) => {
           <ActivityIndicator
             size={100}
             animating
+            color='#FFF'
             style={styles.loading}
           />
         </View>
@@ -57,6 +58,5 @@ export const ListEventScreen = ({ navigation }) => {
         pagingEnabled
       />
     </SafeAreaView>
-
   )
 }

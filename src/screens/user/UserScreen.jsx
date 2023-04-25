@@ -1,26 +1,24 @@
 import React, { useContext } from 'react'
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { styles } from './UserScreen.styles'
-import { UserContext } from '../../user-context/userContext';
-import * as AuthSession from 'expo-auth-session';
-
+import { UserContext } from '../../user-context/userContext'
+import * as AuthSession from 'expo-auth-session'
 
 export const UserScreen = () => {
-
   const { currentUser, setCurrentUser } = useContext(UserContext)
-  const {token} = currentUser
+  const { token } = currentUser
 
-  const logOut = async() => {
+  const logOut = async () => {
     try {
-      if(currentUser.token){
-        await AuthSession.revokeAsync({token}, {revocationEndpoint: "https://oauth2.googleapis.com/revoke"})
-        setCurrentUser(null);
+      if (currentUser.token) {
+        await AuthSession.revokeAsync({ token }, { revocationEndpoint: 'https://oauth2.googleapis.com/revoke' })
+        setCurrentUser(null)
       }
       setCurrentUser(null)
     } catch (error) {
-      throw error;
+      throw error
     }
-  };
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -55,5 +53,5 @@ export const UserScreen = () => {
         <Text style={styles.sectionText}>Ciudad: {currentUser.city}</Text>
       </View>
     </ScrollView>
-  );
-};
+  )
+}

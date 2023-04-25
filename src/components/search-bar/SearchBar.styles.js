@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native'
-import { COLORS } from '../../utils/theme'
+import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.primary,
     borderRadius: 20,
+    borderWidth: 1,
+    borderColor: COLORS.white,
     margin: 10,
     paddingVertical: 5,
     paddingHorizontal: 10,
@@ -19,8 +21,8 @@ export const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     marginLeft: 10,
-    fontSize: 16,
-    color: '#333'
+    fontSize: FONT_SIZE.md,
+    color: COLORS.textWhite
   }
 }
 )

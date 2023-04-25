@@ -24,15 +24,15 @@ export const DetailEventScreen = ({ route }) => {
 
   return (
     <ScrollView style={styles.container}>
-        { isLoading && (
+      {isLoading && (
         <View style={styles.viewLoading}>
-        <ActivityIndicator
+          <ActivityIndicator
             size={100}
             animating
             style={styles.loading}
           />
         </View>
-        )}
+      )}
       <View style={styles.imageContainer}>
         <ScrollView horizontal pagingEnabled style={styles.imageContainer}>
           {item.images.map((image, idx) => (
@@ -51,7 +51,7 @@ export const DetailEventScreen = ({ route }) => {
         <Text style={styles.location}>{item.location}</Text>
         <Text style={styles.price}>{item.price}</Text>
         <View style={styles.ratingContainer}>
-          <Ionicons name='star' size={20} color={COLORS.primary} />
+          <Ionicons name='star' size={20} color={COLORS.textSecondary} />
           <Text style={styles.rating}>{item.rating}</Text>
         </View>
         {currentUser && (

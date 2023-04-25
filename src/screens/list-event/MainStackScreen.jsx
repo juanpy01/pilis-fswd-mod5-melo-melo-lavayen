@@ -21,9 +21,9 @@ const screenOptions = ({ route }) => {
     tabBarIcon: ({ size, color }) => (
       <Ionicons name={IconName} size={size} color={color} />
     ),
-    tabBarActiveTinColor: COLORS.primary,
-    tabBarInactiveTinColor: COLORS.inactive,
     headerShown: false,
+    tabBarActiveTintColor: COLORS.textSecondary,
+    tabBarInactiveTintColor: COLORS.secondary,
     tabBarStyle: styles.tabBar
   }
 }
@@ -40,6 +40,9 @@ export const MainStackScreen = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
+    backgroundColor: COLORS.primary,
+    borderTopColor: COLORS.secondary,
+    borderTopWidth: 2,
     height: SPACING.xxxl,
     paddingBottom: SPACING.xs,
     paddingTop: SPACING.xs
