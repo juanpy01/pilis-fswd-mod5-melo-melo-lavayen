@@ -4,9 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { MainStackScreen } from './src/screens/list-event/MainStackScreen'
 import UserProvider from "./src/user-context/userContext"
 import {UserRegister} from "./src/screens/user/UserRegister"
+import { DetailEventScreen } from './src/screens/detail-event/DetailEventScreen'
 
-
-const EventListStack = createNativeStackNavigator()
+const EventListStack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -16,10 +16,14 @@ export default function App() {
           <EventListStack.Navigator screenOptions={{ headerShown: false }}>
             <EventListStack.Screen name='Main' component={MainStackScreen} />
             <EventListStack.Screen name='userRegister' component={UserRegister} />
+            <EventListStack.Screen
+              name="DetailEvent"
+              component={DetailEventScreen}
+            />
           </EventListStack.Navigator>
         </NavigationContainer>
-        <StatusBar style='auto' />
+        <StatusBar style="auto" />
       </UserProvider>
     </>
-  )
+  );
 }
