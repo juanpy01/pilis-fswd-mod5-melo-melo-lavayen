@@ -1,15 +1,3 @@
-/* import React from 'react'
-import { Text, View } from 'react-native'
-import { styles } from './DetailEventScreen.styles'
-
-export const DetailEventScreen = () => {
-  return (
-    <View>
-      <Text>Detalles</Text>
-    </View>
-  )
-} */
-
 import React, { useContext, useState, useEffect } from 'react'
 import { getEventList } from '../../api/event.service'
 import { View, ScrollView, Image, Text, ActivityIndicator } from 'react-native'
