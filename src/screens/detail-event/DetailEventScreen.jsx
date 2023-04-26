@@ -3,8 +3,6 @@ import { getEventList } from '../../api/event.service'
 import { View, ScrollView, Image, Text, ActivityIndicator } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import { styles } from './DetailEventScreen.styles'
-import { Ionicons } from '@expo/vector-icons'
-import { COLORS } from '../../utils/theme'
 import { Link } from '@react-navigation/native'
 import { UserContext } from '../../user-context/userContext'
 
@@ -50,10 +48,6 @@ export const DetailEventScreen = ({ route }) => {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.location}>{item.location}</Text>
         <Text style={styles.price}>{item.price}</Text>
-        <View style={styles.ratingContainer}>
-          <Ionicons name='star' size={20} color={COLORS.textSecondary} />
-          <Text style={styles.rating}>{item.rating}</Text>
-        </View>
         {currentUser && (
           <Link style={styles.webButton} to={{ screen: 'DetailEventWeb', params: { url: item.url } }}>
             Ir a la web

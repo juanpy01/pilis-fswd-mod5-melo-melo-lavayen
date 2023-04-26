@@ -1,5 +1,5 @@
-import { StyleSheet, StatusBar, Dimensions } from "react-native";
-import { COLORS, FONT_SIZE } from "../../utils/theme";
+import { StyleSheet, StatusBar, Dimensions } from 'react-native'
+import { COLORS, FONT_SIZE } from '../../utils/theme'
 
 export const styles = StyleSheet.create({
   container: {
@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     height: 300
   },
   image: {
-    width: Dimensions.get("screen").width,
+    width: Dimensions.get('screen').width,
     height: 300
   },
   textContainer: {
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: FONT_SIZE.lg,
     color: COLORS.text,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 10
   },
   location: {
@@ -33,15 +33,6 @@ export const styles = StyleSheet.create({
     color: COLORS.textSecondary,
     marginBottom: 5
   },
-  ratingContainer: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  rating: {
-    marginLeft: 8,
-    color: COLORS.text,
-    fontSize: FONT_SIZE.md
-  },
   description: {
     fontSize: FONT_SIZE.md,
     color: COLORS.textWhite,
@@ -50,13 +41,13 @@ export const styles = StyleSheet.create({
   },
   map: {
     height: 250,
-    width: Dimensions.get("screen").width - 20,
+    width: Dimensions.get('screen').width - 20,
     marginVertical: 20,
     marginHorizontal: 10,
     borderRadius: 10
   },
   webButton: {
-    textAlign: "center",
+    textAlign: 'center',
     backgroundColor: COLORS.secondary,
     color: COLORS.white,
     borderRadius: 20,
