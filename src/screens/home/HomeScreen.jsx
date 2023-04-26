@@ -1,14 +1,11 @@
 import React, { useContext } from 'react'
-import { Image, ImageBackground, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ImageBackground, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from './HomeScreen.styles'
 import { UserContext } from '../../user-context/userContext'
 import { useNavigation } from '@react-navigation/native'
 
-
 export const HomeScreen = () => {
-
   const { currentUser, setCurrentUser } = useContext(UserContext)
-
   const navigation = useNavigation()
 
   return (
@@ -18,15 +15,15 @@ export const HomeScreen = () => {
           <View style={styles.header}>
             <Image
               style={styles.profileImage}
-              source={{ uri: "https://m.media-amazon.com/images/I/71kH3wPiGQL.png" }}
+              source={{ uri: 'https://m.media-amazon.com/images/I/71kH3wPiGQL.png' }}
             />
             <View>
-              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Profile")} >
+              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
                 <Text style={styles.buttonText}>Iniciar sesion</Text>
               </TouchableOpacity>
             </View>
             <View>
-              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("userRegister")} >
+              <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('userRegister')}>
                 <Text style={styles.buttonText}>Registrarse</Text>
               </TouchableOpacity>
             </View>
@@ -34,7 +31,7 @@ export const HomeScreen = () => {
           <Text style={styles.title}>
             Busca tu evento!!
           </Text>
-        </ImageBackground>
+          </ImageBackground>
         : <ImageBackground style={styles.bgImage} source={require('../../../assets/camello.jpg')}>
           <View style={styles.header}>
             <Image
@@ -42,7 +39,7 @@ export const HomeScreen = () => {
               source={{ uri: currentUser.image }}
             />
             <View>
-              <TouchableOpacity style={styles.button} onPress={() => setCurrentUser(null)} >
+              <TouchableOpacity style={styles.button} onPress={() => setCurrentUser(null)}>
                 <Text style={styles.buttonText}>Salir</Text>
               </TouchableOpacity>
             </View>
@@ -50,8 +47,7 @@ export const HomeScreen = () => {
           <Text style={styles.title}>
             Busca tu evento!!
           </Text>
-        </ImageBackground>
-      }
-    </SafeAreaView >
-  );
-};
+          </ImageBackground>}
+    </SafeAreaView>
+  )
+}

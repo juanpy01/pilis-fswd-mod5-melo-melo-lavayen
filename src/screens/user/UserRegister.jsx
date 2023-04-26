@@ -9,9 +9,9 @@ import SelectDropdown from 'react-native-select-dropdown'
 import { cities } from '../../utils/cities'
 
 export const UserRegister = () => {
-  const [image, setImage] = useState(null)// para guardar el estado de la imagen/ abajo los paso como props en su componente
-  const [city, setCity] = useState('') // para guardar el estado de la seleccion de la ciudad
-  const { setCurrentUser } = useContext(UserContext)// guardamos el objeto final de usuarion en el contexto de ususario
+  const [image, setImage] = useState(null)
+  const [city, setCity] = useState('')
+  const { setCurrentUser } = useContext(UserContext)
   const navigation = useNavigation()
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
@@ -23,14 +23,13 @@ export const UserRegister = () => {
     }
   })
 
-  const dropdownRef = useRef({})// hago referencia al reset en el select
+  const dropdownRef = useRef({})
 
-  // esta funcion la llamamos en "SelectDropdown", libreria del select como el useForm
-  const selectItem = (item) => { // nos va a retornar el item seleccionado del select, funciona como el useForm
-    setCity(item)// seteamo el estado de ciudad con el item seleccionado
+  const selectItem = (item) => {
+    setCity(item)
   }
 
-  const handleRegister = (data) => { // creamos un objeto con todas las key y propiedades q necesito en mi user contex
+  const handleRegister = (data) => {
     const dataUserNew = {
       id: '546435484321',
       email: data.email,
@@ -41,13 +40,13 @@ export const UserRegister = () => {
       city
     }
 
-    setCurrentUser(dataUserNew) // seteamos el contexto
-    navigation.navigate('Home')// una vez seteado el context navegamosa home
+    setCurrentUser(dataUserNew)
+    navigation.navigate('Home')
   }
 
   const clear = () => {
-    reset() // reseta el formular
-    dropdownRef.current.reset() // reseta el select
+    reset()
+    dropdownRef.current.reset()
   }
 
   return (

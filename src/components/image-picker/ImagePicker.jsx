@@ -3,8 +3,6 @@ import * as ImagePicker from 'expo-image-picker'
 import { Button, Image, Text, View } from 'react-native'
 import { styles } from './ImagePicker.styles'
 
-// https://docs.expo.dev/versions/latest/sdk/imagepicker/
-
 export const ImageProfile = ({ image, setImage }) => {
   const pickImage = async () => {
     const getImage = await ImagePicker.launchImageLibraryAsync({

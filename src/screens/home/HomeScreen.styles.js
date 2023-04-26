@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   bgImage: {
     resizeMode: 'cover',
     width: '100%',
-    height: "100%",
+    height: '100%',
     justifyContent: 'center',
     top: 0
   },
@@ -27,15 +27,14 @@ export const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     padding: 20,
-    paddingVertical:5,
-    top:-240
-    
+    paddingVertical: 5,
+    top: -240
   },
   profileImage: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    marginRight: 5,
+    marginRight: 5
   },
   profileInfo: {
     justifyContent: 'center'
