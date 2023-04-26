@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { getEventList } from '../../api/event.service'
-import { SafeAreaView, FlatList, View, Text, Pressable, Image, ActivityIndicator } from 'react-native'
+import { SafeAreaView, FlatList, View, Text, Pressable, Image, ActivityIndicator, Alert } from 'react-native'
+import { UserContext } from '../../user-context/userContext'
 import { SearchBar } from '../../components/search-bar/SearchBar'
 import { styles } from '../list-event/ListEventScreen.styles'
 
@@ -8,6 +9,8 @@ export const ListEventScreen = ({ navigation }) => {
   const [eventList, setEventList] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+
+  const { currentUser } = useContext(UserContext)
 
   const handleSearch = (query) => {
     setSearchQuery(query)
@@ -25,16 +28,32 @@ export const ListEventScreen = ({ navigation }) => {
       .catch(err => console.log(err))
   }, [])
 
-  const event = ({ item }) => (
-    <Pressable onPress={() => navigation.navigate('DetailEvent', { item })}>
-      <View style={styles.itemContainer}>
-        <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} />
-        <Text style={styles.itemTitle}>{item.title}</Text>
-        <Text style={styles.itemPrice}>{item.price}</Text>
-        <Text style={styles.description}>{item.description}</Text>
-      </View>
-    </Pressable>
-  )
+const eventAlert = ({ item }) => {
+  Alert.alert('Iniciar Sesión para más detalles.')
+  navigation.navigate('Profile', {item})
+}
+
+  const event = ({ item }) => {
+    return (
+      currentUser 
+      ? 
+        <Pressable onPress={() => navigation.navigate('DetailEvent', { item })}>
+          <View style={styles.itemContainer}>
+          <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} />
+          <Text style={styles.itemTitle}>{item.title}</Text>
+          <Text>Más info</Text>
+          </View>
+        </Pressable>
+      :
+      <Pressable onPress={() => eventAlert(item)}>
+            <View style={styles.itemContainer}> 
+            <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} /> 
+            <Text style={styles.itemTitle}>{item.title}</Text> 
+            <Text>Más info</Text>
+          </View> 
+      </Pressable>
+    )
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -54,8 +73,6 @@ export const ListEventScreen = ({ navigation }) => {
         renderItem={event}
         keyExtractor={item => item.id}
         style={styles.itemList}
-        horizontal
-        pagingEnabled
       />
     </SafeAreaView>
   )
