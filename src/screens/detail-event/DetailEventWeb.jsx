@@ -1,6 +1,6 @@
 import React from 'react'
 import { SafeAreaView } from 'react-native'
-import { styles } from './LocationDetailWebScreen.styles'
+import { styles } from './DetailEventWeb.styles'
 import WebView from 'react-native-webview'
 
 export const DetailEventWeb = ({ route }) => {
