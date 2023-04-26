@@ -4,15 +4,16 @@ import { COLORS, FONT_SIZE } from '../../utils/theme'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     marginTop: StatusBar.currentHeight,
     backgroundColor: COLORS.secondary
   },
   itemContainer: {
     flex: 1,
-    width: Dimensions.get('screen').width,
+    width: Dimensions.get('screen').width - 15,
     borderRadius: 20,
     overflow: 'hidden',
-    marginBottom: 10,
+    marginBottom: 20,
     backgroundColor: COLORS.primary,
     elevation: 3,
     shadowColor: '#000',
@@ -32,9 +33,9 @@ export const styles = StyleSheet.create({
     marginLeft: -30
   },
   itemImage: {
-    height: '50%',
+    height: 200,
     width: '100%',
-    objectFit: 'scale-down'
+    resizeMode: 'cover'
   },
   itemTitle: {
     fontSize: FONT_SIZE.lg,
@@ -43,17 +44,12 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 10
   },
-  itemPrice: {
-    fontSize: FONT_SIZE.md,
-    color: COLORS.textSecondary,
-    marginTop: 5,
-    marginBottom: 10,
-    marginHorizontal: 10
+  infoContainer: {
+    alignItems: 'center'
   },
-  description: {
+  itemInfo: {
+    margin: 20,
     color: COLORS.textWhite,
-    fontSize: FONT_SIZE.md,
-    textAlign: 'justify',
-    padding: 10
+    fontSize: FONT_SIZE.md
   }
 })
