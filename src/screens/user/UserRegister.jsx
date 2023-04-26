@@ -11,7 +11,7 @@ import { cities } from '../../utils/cities'
 export const UserRegister = () => {
   const [image, setImage] = useState(null)// para guardar el estado de la imagen/ abajo los paso como props en su componente
   const [city, setCity] = useState('') // para guardar el estado de la seleccion de la ciudad
-  const { currentUser, setCurrentUser } = useContext(UserContext)// guardamos el objeto final de usuarion en el contexto de ususario
+  const { setCurrentUser } = useContext(UserContext)// guardamos el objeto final de usuarion en el contexto de ususario
   const navigation = useNavigation()
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
@@ -68,7 +68,7 @@ export const UserRegister = () => {
             />
           )}
           name='email'
-          rules={{ required: 'El email de usuario es requerido' }}
+          rules={{ required: 'El email es requerido' }}
         />
         {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
         <Controller
@@ -81,11 +81,10 @@ export const UserRegister = () => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              secureTextEntry
             />
           )}
           name='name'
-          rules={{ required: 'Ingrese un nombre' }}
+          rules={{ required: 'El nombre es requerido' }}
         />
         {errors.name && <Text style={styles.errorText}>{errors.name.message}</Text>}
         <Controller
@@ -98,11 +97,10 @@ export const UserRegister = () => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              secureTextEntry
             />
           )}
           name='lastname'
-          rules={{ required: 'EL apellido es requerido' }}
+          rules={{ required: 'El apellido es requerido' }}
         />
         {errors.lastname && <Text style={styles.errorText}>{errors.lastname.message}</Text>}
         <Controller
@@ -115,11 +113,10 @@ export const UserRegister = () => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              secureTextEntry
             />
           )}
           name='telephone'
-          rules={{ required: 'El telefono es obligatorio' }}
+          rules={{ required: 'El telefono es requerido' }}
         />
         {errors.telephone && <Text style={styles.errorText}>{errors.telephone.message}</Text>}
         <SelectDropdown
@@ -132,7 +129,6 @@ export const UserRegister = () => {
           rowTextStyle={styles.buttonCitiesRowTextStyle}
           ref={dropdownRef}
         />
-
         <ImageProfile
           image={image}
           setImage={setImage}
