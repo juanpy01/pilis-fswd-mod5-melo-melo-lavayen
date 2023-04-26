@@ -41,7 +41,7 @@ Puntos adicionales:
 
 ## SOBRE LA APLICACIÓN
 
-### Datos de Usuarios creados en mockAPI:
+### Credenciales para Iniciar Sesión:
 
 - **Usuario 1:** arcoier@gmail.com
 - **Contraseña:** 123456
