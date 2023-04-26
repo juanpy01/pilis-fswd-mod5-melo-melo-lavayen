@@ -28,36 +28,38 @@ export const ListEventScreen = ({ navigation }) => {
       .catch(err => console.log(err))
   }, [])
 
-const eventAlert = ({ item }) => {
+  const eventAlert = ({ item }) => {
     Alert.alert('Espera', 'Iniciar Sesión para más detalles.', [
       {
         text: 'Cancel',
         onPress: () => (' '),
-        style: 'cancel',
+        style: 'cancel'
       },
-      {text: 'OK', onPress: () => navigation.navigate('Profile', {item})},
-    ]);
-}
+      { text: 'OK', onPress: () => navigation.navigate('Profile', { item }) }
+    ])
+  }
 
   const event = ({ item }) => {
     return (
-      currentUser 
-      ? 
-        <Pressable onPress={() => navigation.navigate('DetailEvent', { item })}>
+      currentUser
+        ? <Pressable onPress={() => navigation.navigate('DetailEvent', { item })}>
           <View style={styles.itemContainer}>
-          <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} />
-          <Text style={styles.itemTitle}>{item.title}</Text>
-          <Text>Más info</Text>
+            <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} />
+            <Text style={styles.itemTitle}>{item.title}</Text>
+            <View style={styles.infoContainer}>
+              <Text style={styles.itemInfo}>Más info</Text>
+            </View>
           </View>
-        </Pressable>
-      :
-      <Pressable onPress={() => eventAlert(item)}>
-            <View style={styles.itemContainer}> 
-            <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} /> 
-            <Text style={styles.itemTitle}>{item.title}</Text> 
-            <Text>Más info</Text>
-          </View> 
-      </Pressable>
+          </Pressable>
+        : <Pressable onPress={() => eventAlert(item)}>
+          <View style={styles.itemContainer}>
+            <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} />
+            <Text style={styles.itemTitle}>{item.title}</Text>
+            <View style={styles.infoContainer}>
+              <Text style={styles.itemInfo}>Más info</Text>
+            </View>
+          </View>
+          </Pressable>
     )
   }
 
