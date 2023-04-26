@@ -29,8 +29,14 @@ export const ListEventScreen = ({ navigation }) => {
   }, [])
 
 const eventAlert = ({ item }) => {
-  Alert.alert('Iniciar Sesión para más detalles.')
-  navigation.navigate('Profile', {item})
+    Alert.alert('Espera', 'Iniciar Sesión para más detalles.', [
+      {
+        text: 'Cancel',
+        onPress: () => (' '),
+        style: 'cancel',
+      },
+      {text: 'OK', onPress: () => navigation.navigate('Profile', {item})},
+    ]);
 }
 
   const event = ({ item }) => {
